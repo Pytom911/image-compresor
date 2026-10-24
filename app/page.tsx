@@ -2,8 +2,8 @@
 
 import { useRef, useState } from "react";
 
-const GITHUB_URL = "https://github.com/USERNAME/REPO";
-const SAWERIA_URL = "https://saweria.co/USERNAME";
+const GITHUB_URL = "https://github.com/Pytom911/image-compresor";
+const SAWERIA_URL = "https://saweria.co/PytomDev";
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
