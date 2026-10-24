@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState } from "react";
@@ -70,7 +69,7 @@ export default function Home() {
             else reject(new Error("Gagal memproses gambar."));
           },
           format,
-          quality / 100
+          quality / 100,
         );
       });
 
@@ -83,9 +82,7 @@ export default function Home() {
         name: `${file.name.replace(/\.[^.]+$/, "")}-compressed.${extension}`,
       });
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : "Terjadi kesalahan."
-      );
+      setError(err instanceof Error ? err.message : "Terjadi kesalahan.");
     } finally {
       setProcessing(false);
     }
@@ -97,16 +94,17 @@ export default function Home() {
     return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
   }
 
-  const saved = file && result
-    ? Math.round((1 - result.size / file.size) * 100)
-    : 0;
+  const saved =
+    file && result ? Math.round((1 - result.size / file.size) * 100) : 0;
 
   return (
     <main>
       <nav className="navbar">
         <a href="#" className="brand">
           <span className="brand-icon">P</span>
-          <span>Pixel<span className="brand-light">Press</span></span>
+          <span>
+            Pixel<span className="brand-light">Press</span>
+          </span>
         </a>
 
         <div className="nav-links">
@@ -133,9 +131,8 @@ export default function Home() {
         </h1>
 
         <p className="hero-description">
-          Compress your images without the hassle.
-          Smaller file sizes, faster websites, and more
-          room for what matters.
+          Compress your images without the hassle. Smaller file sizes, faster
+          websites, and more room for what matters.
         </p>
 
         <div className="hero-actions">
@@ -151,7 +148,9 @@ export default function Home() {
           <div className="editor-window">
             <div className="window-top">
               <div className="window-dots">
-                <i /><i /><i />
+                <i />
+                <i />
+                <i />
               </div>
               <span className="window-title">Image workspace</span>
               <span className="secure-badge">✳ Private & secure</span>
@@ -172,9 +171,7 @@ export default function Home() {
                   >
                     <span className="upload-icon">↑</span>
                     <strong>Drop your image here</strong>
-                    <span className="muted">
-                      or click to browse files
-                    </span>
+                    <span className="muted">or click to browse files</span>
                     <span className="file-types">
                       JPG · PNG · WEBP · MAX 20 MB
                     </span>
@@ -210,9 +207,7 @@ export default function Home() {
                   type="file"
                   accept="image/*"
                   hidden
-                  onChange={(event) =>
-                    handleFile(event.target.files?.[0])
-                  }
+                  onChange={(event) => handleFile(event.target.files?.[0])}
                 />
 
                 <div className="privacy-card">
@@ -279,8 +274,8 @@ export default function Home() {
                     {quality < 50
                       ? "Higher compression, lower visual quality."
                       : quality < 80
-                      ? "Balanced compression for everyday use."
-                      : "Higher image quality with larger file sizes."}
+                        ? "Balanced compression for everyday use."
+                        : "Higher image quality with larger file sizes."}
                   </p>
                 </div>
 
@@ -290,9 +285,7 @@ export default function Home() {
                   onClick={compressImage}
                   disabled={!file || processing}
                 >
-                  {processing
-                    ? "Compressing..."
-                    : "Compress image  →"}
+                  {processing ? "Compressing..." : "Compress image  →"}
                 </button>
 
                 {error && <p className="error-message">{error}</p>}
@@ -379,8 +372,8 @@ export default function Home() {
           <span className="eyebrow">BUILT WITH CARE</span>
           <h2>Useful tools, made independently.</h2>
           <p>
-            PixelPress is an independent project by PytomDev.
-            If this tool helps you, support its development.
+            PixelPress is an independent project by PytomDev. If this tool helps
+            you, support its development.
           </p>
         </div>
         <div className="support-actions">
@@ -406,9 +399,20 @@ export default function Home() {
       <footer className="footer">
         <a href="#" className="brand footer-brand">
           <span className="brand-icon">P</span>
-          <span>Pixel<span className="brand-light">Press</span></span>
+          <span>
+            Pixel<span className="brand-light">Press</span>
+          </span>
         </a>
-        <p>Made with care by <a href="https://pytomdev.vercel.app/" target="_blank" rel="noreferrer">PytomDev</a></p>
+        <p>
+          Made with care by{" "}
+          <a
+            href="https://pytomdev.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            PytomDev
+          </a>
+        </p>
         <span className="footer-note">Your images. Your device.</span>
       </footer>
     </main>
